@@ -1540,19 +1540,146 @@ button, input {
   visibility: visible;
 }
 
-.lightbox-content {
-  position: relative;
-  max-width: 960px;
-  width: 100%;
-  background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+/* ---------- Sección Danza La Bandera Peruana ---------- */
+.bandera-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.bandera-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 760px) {
+  .bandera-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.bandera-photo-card {
+  margin: 0;
+  background: var(--stone-card);
+  border: 1px solid var(--stone-2);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.bandera-photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.bandera-img-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #0d151a;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.bandera-img-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.bandera-img-btn:hover img {
+  transform: scale(1.04);
+}
+
+.bandera-photo-card figcaption {
+  padding: 18px 22px;
+}
+
+.bandera-photo-card figcaption strong {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.bandera-photo-card figcaption p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.bandera-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 860px) {
+  .bandera-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bandera-info-card {
+  background: var(--stone-card);
+  border: 1px solid var(--stone-2);
+  border-left: 4px solid var(--cochineal);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.bandera-info-card h3 {
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.bandera-info-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.bandera-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.bandera-list li strong {
+  color: var(--ink);
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 920px;
+  width: 100%;
+  background: #142027;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
 }
 
 .lightbox-img-wrap {
-  background: #0d151a;
+  background: #0b1216;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1561,48 +1688,68 @@ button, input {
 }
 
 .lightbox-img-wrap img {
+  display: block;
   max-height: 72vh;
   width: auto;
   max-width: 100%;
+  margin: 0 auto;
   object-fit: contain;
 }
 
 .lightbox-bar {
-  padding: 14px 18px;
+  padding: 16px 20px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  color: var(--stone);
-  background: var(--ink);
+  gap: 14px;
+  color: #ffffff;
+  background: #16232a;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.lightbox-caption {
+.lightbox-caption,
+:root[data-theme="dark"] .lightbox-caption,
+:root[data-theme="light"] .lightbox-caption {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #ffffff;
+  flex: 1 1 260px;
 }
 
 .lightbox-controls {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #ffffff;
+}
+
+#lightbox-counter {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 4px;
 }
 
 .lightbox-btn {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--stone);
-  border: 0;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
   min-width: 40px;
   height: 40px;
   padding: 0 12px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 700;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .lightbox-btn:hover {
   background: var(--cochineal);
+  border-color: var(--cochineal);
+  color: #ffffff;
 }
 
 /* ---------- Animaciones Scroll Reveal y Movimiento ---------- */
