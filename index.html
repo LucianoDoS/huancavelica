@@ -39,17 +39,18 @@
       </nav>
 
       <div class="nav-actions">
-        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo oscuro y claro" title="Cambiar tema">
+        <button type="button" class="nav-btn theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo oscuro y claro" title="Cambiar tema">
           <span class="theme-icon" id="theme-icon" aria-hidden="true">☾</span>
           <span class="theme-label" id="theme-label">Oscuro</span>
         </button>
 
-        <button type="button" class="saved-pill" id="saved-filter-btn" aria-pressed="false" title="Ver mis atractivos guardados">
-          <span>Mi ruta</span>
-          <span class="saved-count" id="saved-count">0</span>
+        <button type="button" class="nav-btn saved-pill" id="saved-filter-btn" data-saved-toggle aria-pressed="false" title="Ver solo mis atractivos guardados">
+          <span class="saved-star" aria-hidden="true">★</span>
+          <span class="saved-text">Mi ruta</span>
+          <span class="saved-count" data-saved-count>0</span>
         </button>
 
-        <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
+        <button type="button" class="nav-btn menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
@@ -173,13 +174,20 @@
               <span>Naturaleza y aguas</span>
               <span class="chip-badge">3</span>
             </button>
+            <button type="button" class="chip chip--saved" id="saved-filter-chip" data-saved-toggle aria-pressed="false" title="Ver solo mis atractivos guardados">
+              <span aria-hidden="true">★</span>
+              <span>Mi ruta</span>
+              <span class="chip-badge" data-saved-count>0</span>
+            </button>
           </div>
 
           <div class="search-box">
-            <input type="search" id="search-places" class="search-input" placeholder="Buscar lugar o tradición (ej. Yauli, lagunas...)" aria-label="Buscar atractivo turístico">
+            <input type="search" id="search-places" class="search-input" placeholder="Buscar lugar o tradición" aria-label="Buscar atractivo turístico">
             <button type="button" id="search-clear" class="search-clear" aria-label="Limpiar búsqueda">×</button>
           </div>
         </div>
+
+        <p class="results-count" id="results-count" role="status" aria-live="polite"></p>
 
         <div class="grid" id="cards">
           <article class="card" data-cat="historia" data-id="plaza-catedral" data-reveal>
@@ -226,6 +234,9 @@
 
           <article class="card" data-cat="cultura" data-id="museo-morillo" data-reveal>
             <div class="weave weave--a" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Fachada del Museo Regional Daniel Hernández Morillo, del Ministerio de Cultura, en Huancavelica.">
+              <img src="img/museo-morillo.jpg" alt="Fachada del Museo Regional Daniel Hernández Morillo en Huancavelica" width="1000" height="464" loading="lazy">
+            </div>
             <span class="card-cat-tag">Cultura viva</span>
             <h3>Museo Daniel Hernández Morillo</h3>
             <p>Guarda la momia conocida como el Niño de Pultocc, una de las piezas más comentadas del museo.</p>
@@ -251,6 +262,9 @@
 
           <article class="card" data-cat="cultura" data-id="yauli-uchkus" data-reveal style="--delay: 120ms;">
             <div class="weave weave--b" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Muros de piedra del sitio arqueológico de Uchkus Inkañan, en Huancavelica.">
+              <img src="img/uchkus-inkanan.jpg" alt="Muros de piedra del sitio arqueológico Uchkus Inkañan" width="430" height="285" loading="lazy">
+            </div>
             <span class="card-cat-tag">Cultura viva</span>
             <h3>Yauli y Uchkus Inkañan</h3>
             <p>Yauli es conocido como la capital de la artesanía textil y conserva técnicas ancestrales de tejido. Desde allí parte el circuito arqueológico de Uchkus Inkañan, de entrada gratuita.</p>
@@ -262,6 +276,9 @@
 
           <article class="card" data-cat="naturaleza" data-id="lagunas-choclococha" data-reveal>
             <div class="weave weave--d" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Laguna altoandina de aguas turquesa entre cerros de la sierra de Huancavelica.">
+              <img src="img/laguna-altoandina.jpg" alt="Laguna de aguas turquesa rodeada de cerros altoandinos" width="739" height="415" loading="lazy">
+            </div>
             <span class="card-cat-tag">Naturaleza y aguas</span>
             <h3>Lagunas de Pultocc y Choclococha</h3>
             <p>La ruta de las lagunas pasa por Santa Inés, donde se sirve trucha. Choclococha cierra el circuito: detente en la orilla para ver el antiguo pueblo y sus casas.</p>
@@ -273,6 +290,9 @@
 
           <article class="card" data-cat="historia" data-id="huaytara" data-reveal style="--delay: 60ms;">
             <div class="weave weave--c" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Interior de la iglesia de Huaytará, levantada sobre muros incas de piedra.">
+              <img src="img/huaytara-templo.jpg" alt="Interior de la iglesia de Huaytará con muros incas de piedra y retablo colonial" width="516" height="387" loading="lazy">
+            </div>
             <span class="card-cat-tag">Historia</span>
             <h3>Huaytará: templo inca y museo</h3>
             <p>El templo inca de Huaytará y el museo Humberto Espinoza Lozano están entre los atractivos más importantes de la región.</p>
@@ -284,6 +304,9 @@
 
           <article class="card" data-cat="naturaleza" data-id="vilca" data-reveal style="--delay: 120ms;">
             <div class="weave weave--a" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Cascadas escalonadas entre cerros en el distrito de Vilca.">
+              <img src="img/vilca-cascadas.jpg" alt="Cascadas escalonadas de agua entre cerros secos y pastizales" width="1200" height="675" loading="lazy">
+            </div>
             <span class="card-cat-tag">Naturaleza y aguas</span>
             <h3>Vilca</h3>
             <p>Un distrito con pinturas rupestres, cañones, formaciones geológicas y cuevas. Conviene ir con guía local.</p>
@@ -295,6 +318,9 @@
 
           <article class="card" data-cat="historia" data-id="lircay" data-reveal>
             <div class="weave weave--b" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Iglesia de dos torres y fachada amarilla en Lircay.">
+              <img src="img/lircay-iglesia.jpg" alt="Iglesia de dos torres con fachada amarilla y detalles rojos" width="638" height="480" loading="lazy">
+            </div>
             <span class="card-cat-tag">Historia</span>
             <h3>Lircay y Pueblo Viejo</h3>
             <p>Capital de provincia de clima más templado. En el barrio de Pueblo Viejo se conservan construcciones coloniales.</p>
@@ -320,6 +346,9 @@
 
           <article class="card" data-cat="cultura" data-id="chaccu-vicunas" data-reveal style="--delay: 120ms;">
             <div class="weave weave--d" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Pobladores con la bandera peruana arrean vicuñas durante un chaccu.">
+              <img src="img/chaccu-vicunas.jpg" alt="Pobladores con la bandera peruana junto a un grupo de vicuñas durante un chaccu" width="1200" height="675" loading="lazy">
+            </div>
             <span class="card-cat-tag">Cultura viva</span>
             <h3>Chaccu de vicuñas</h3>
             <p>La fiesta en que se arrea y esquila a las vicuñas, una de las grandes tradiciones de la región. Las fechas cambian cada año: pregunta en la municipalidad.</p>
@@ -331,8 +360,8 @@
         </div>
 
         <div class="empty-state" id="empty-state" hidden>
-          <h3>No encontramos atractivos con ese filtro</h3>
-          <p>Prueba con otra palabra clave o vuelve a mostrar las doce recomendaciones de la guía.</p>
+          <h3 id="empty-title">No encontramos atractivos con ese filtro</h3>
+          <p id="empty-text">Prueba con otra palabra clave o vuelve a mostrar las doce recomendaciones de la guía.</p>
           <button type="button" class="btn" id="reset-filters">Mostrar todos los lugares</button>
         </div>
       </div>
@@ -430,6 +459,41 @@
           <button type="button" class="gallery-item" data-reveal data-lightbox-caption="Vista del valle y el curso del río Ichu atravesando la ciudad de Huancavelica.">
             <img src="img/mirador-ciudad.jpg" alt="Valle de Huancavelica desde el mirador" width="640" height="480" loading="lazy">
             <span class="gallery-caption">Valle del río Ichu</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal data-lightbox-caption="Fachada del Museo Regional Daniel Hernández Morillo, del Ministerio de Cultura, en Huancavelica.">
+            <img src="img/museo-morillo.jpg" alt="Fachada del Museo Daniel Hernández Morillo" width="1000" height="464" loading="lazy">
+            <span class="gallery-caption">Museo Daniel Hernández Morillo</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 60ms;" data-lightbox-caption="Interior de la iglesia de Huaytará, levantada sobre muros incas de piedra.">
+            <img src="img/huaytara-templo.jpg" alt="Interior de la iglesia de Huaytará con muros incas" width="516" height="387" loading="lazy">
+            <span class="gallery-caption">Huaytará: iglesia sobre muros incas</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 120ms;" data-lightbox-caption="Iglesia de dos torres y fachada amarilla en Lircay.">
+            <img src="img/lircay-iglesia.jpg" alt="Iglesia de dos torres con fachada amarilla" width="638" height="480" loading="lazy">
+            <span class="gallery-caption">Iglesia de Lircay</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 180ms;" data-lightbox-caption="Muros de piedra del sitio arqueológico de Uchkus Inkañan, en Huancavelica.">
+            <img src="img/uchkus-inkanan.jpg" alt="Muros de piedra de Uchkus Inkañan" width="430" height="285" loading="lazy">
+            <span class="gallery-caption">Uchkus Inkañan</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal data-lightbox-caption="Laguna altoandina de aguas turquesa entre cerros de la sierra de Huancavelica.">
+            <img src="img/laguna-altoandina.jpg" alt="Laguna de aguas turquesa rodeada de cerros" width="739" height="415" loading="lazy">
+            <span class="gallery-caption">Laguna altoandina</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 60ms;" data-lightbox-caption="Cascadas escalonadas entre cerros en el distrito de Vilca.">
+            <img src="img/vilca-cascadas.jpg" alt="Cascadas escalonadas entre cerros" width="1200" height="675" loading="lazy">
+            <span class="gallery-caption">Cascadas de Vilca</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 120ms;" data-lightbox-caption="Pobladores con la bandera peruana arrean vicuñas durante un chaccu.">
+            <img src="img/chaccu-vicunas.jpg" alt="Pobladores con la bandera peruana junto a vicuñas" width="1200" height="675" loading="lazy">
+            <span class="gallery-caption">Chaccu de vicuñas</span>
           </button>
 
           <button type="button" class="gallery-item gallery-item--contain" data-reveal style="--delay: 60ms;" data-lightbox-caption="Ubicación geográfica del departamento de Huancavelica en la sierra centro-sur del Perú.">
@@ -643,15 +707,13 @@
     <div class="lightbox-content">
       <div class="lightbox-img-wrap">
         <img id="lightbox-img" src="img/catedral-plaza.jpg" alt="">
+        <button type="button" class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Cerrar visor">✕</button>
+        <button type="button" class="lightbox-btn lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Imagen anterior">‹</button>
+        <button type="button" class="lightbox-btn lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Imagen siguiente">›</button>
       </div>
       <div class="lightbox-bar">
         <p class="lightbox-caption" id="lightbox-caption"></p>
-        <div class="lightbox-controls">
-          <span id="lightbox-counter">1 / 8</span>
-          <button type="button" class="lightbox-btn" id="lightbox-prev" aria-label="Imagen anterior">‹</button>
-          <button type="button" class="lightbox-btn" id="lightbox-next" aria-label="Imagen siguiente">›</button>
-          <button type="button" class="lightbox-btn" id="lightbox-close" aria-label="Cerrar visor">✕</button>
-        </div>
+        <span class="lightbox-counter" id="lightbox-counter">1 / 1</span>
       </div>
     </div>
   </div>

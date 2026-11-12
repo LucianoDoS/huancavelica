@@ -239,14 +239,18 @@
   }
 
   // ---------- 5. Filtro de atractivos, buscador y "Mi Ruta" (Favoritos) ----------
-  var chips = document.querySelectorAll('.chip');
+  var chips = document.querySelectorAll('.chip[data-filter]');
   var cards = Array.prototype.slice.call(document.querySelectorAll('#cards .card'));
   var searchInput = document.getElementById('search-places');
   var searchClear = document.getElementById('search-clear');
   var emptyState = document.getElementById('empty-state');
+  var emptyTitle = document.getElementById('empty-title');
+  var emptyText = document.getElementById('empty-text');
+  var resultsCount = document.getElementById('results-count');
   var resetFiltersBtn = document.getElementById('reset-filters');
-  var savedFilterBtn = document.getElementById('saved-filter-btn');
-  var savedCountEl = document.getElementById('saved-count');
+  // Hay dos botones "Mi ruta" (cabecera y barra de filtros) que se mantienen sincronizados
+  var savedToggles = Array.prototype.slice.call(document.querySelectorAll('[data-saved-toggle]'));
+  var savedCountEls = Array.prototype.slice.call(document.querySelectorAll('[data-saved-count]'));
 
   var activeFilter = 'todo';
   var onlySaved = false;
@@ -269,11 +273,11 @@
 
   function updateSavedUI() {
     var count = Object.keys(savedPlaces).filter(function (k) { return savedPlaces[k]; }).length;
-    if (savedCountEl) savedCountEl.textContent = String(count);
-    if (savedFilterBtn) {
-      savedFilterBtn.classList.toggle('has-items', count > 0 || onlySaved);
-      savedFilterBtn.setAttribute('aria-pressed', onlySaved ? 'true' : 'false');
-    }
+    savedCountEls.forEach(function (el) { el.textContent = String(count); });
+    savedToggles.forEach(function (btn) {
+      btn.classList.toggle('has-items', count > 0);
+      btn.setAttribute('aria-pressed', onlySaved ? 'true' : 'false');
+    });
     cards.forEach(function (card) {
       var id = card.getAttribute('data-id');
       var btn = card.querySelector('.fav-btn');
@@ -286,7 +290,7 @@
     });
   }
 
-  function applyCardFilters() {
+  function applyCardFilters(skipAnimation) {
     var query = searchInput ? searchInput.value.trim().toLowerCase() : '';
     if (searchClear) {
       searchClear.classList.toggle('is-visible', query.length > 0);
@@ -306,21 +310,38 @@
       card.hidden = !show;
       if (show) {
         visibleCount++;
-        card.classList.remove('is-filtering-in');
-        void card.offsetWidth;
-        card.classList.add('is-filtering-in');
+        if (skipAnimation !== true) {
+          card.classList.remove('is-filtering-in');
+          void card.offsetWidth;
+          card.classList.add('is-filtering-in');
+        }
       }
     });
 
     if (emptyState) {
       emptyState.hidden = visibleCount > 0;
     }
+
+    if (resultsCount) {
+      resultsCount.textContent = 'Mostrando ' + visibleCount + ' de ' + cards.length + ' lugares' +
+        (onlySaved ? ' · solo guardados' : '');
+    }
+
+    if (emptyTitle && emptyText && visibleCount === 0) {
+      var anySaved = Object.keys(savedPlaces).some(function (k) { return savedPlaces[k]; });
+      if (onlySaved && !anySaved && !query && activeFilter === 'todo') {
+        emptyTitle.textContent = 'Todavía no guardaste ningún lugar';
+        emptyText.textContent = 'Toca ★ Guardar en cualquier tarjeta y aparecerá aquí tu ruta personal.';
+      } else {
+        emptyTitle.textContent = 'No encontramos atractivos con ese filtro';
+        emptyText.textContent = 'Prueba con otra palabra clave o vuelve a mostrar las doce recomendaciones de la guía.';
+      }
+    }
   }
 
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       activeFilter = chip.getAttribute('data-filter') || 'todo';
-      onlySaved = false;
       chips.forEach(function (c) {
         c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
       });
@@ -354,17 +375,18 @@
     });
   }
 
-  if (savedFilterBtn) {
-    savedFilterBtn.addEventListener('click', function () {
+  savedToggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
       onlySaved = !onlySaved;
       updateSavedUI();
       applyCardFilters();
+      // Solo el botón de la cabecera lleva a la sección; el de la barra de filtros ya está en ella
       var verSec = document.getElementById('ver');
-      if (verSec && onlySaved) {
+      if (verSec && onlySaved && btn.id === 'saved-filter-btn') {
         verSec.scrollIntoView({ behavior: 'smooth' });
       }
     });
-  }
+  });
 
   cards.forEach(function (card) {
     var btn = card.querySelector('.fav-btn');
@@ -380,6 +402,7 @@
   });
 
   updateSavedUI();
+  applyCardFilters(true);
 
   // ---------- 6. Pestañas de rutas y checklist interactivo ----------
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
@@ -439,37 +462,70 @@
   var lbNext = document.getElementById('lightbox-next');
   var lbClose = document.getElementById('lightbox-close');
 
-  var galleryTriggers = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox-caption]'));
+  var rawTriggers = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox-caption]'));
+  // Una misma foto aparece en varias secciones: el visor recorre cada foto una sola vez
+  var galleryItems = [];
+  var indexBySrc = {};
   var currentIndex = 0;
+  var lastTrigger = null;
 
   function showLightboxAt(index) {
-    if (!lightbox || !galleryTriggers.length) return;
-    currentIndex = (index + galleryTriggers.length) % galleryTriggers.length;
-    var trigger = galleryTriggers[currentIndex];
-    var innerImg = trigger.tagName === 'IMG' ? trigger : trigger.querySelector('img');
-    var src = innerImg ? innerImg.getAttribute('src') : '';
-    var caption = trigger.getAttribute('data-lightbox-caption') || '';
-    if (lightboxImg && src) {
-      lightboxImg.src = src;
-      lightboxImg.alt = caption;
+    if (!lightbox || !galleryItems.length) return;
+    currentIndex = (index + galleryItems.length) % galleryItems.length;
+    var item = galleryItems[currentIndex];
+    if (lightboxImg) {
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.caption;
     }
-    if (lightboxCaption) lightboxCaption.textContent = caption;
+    if (lightboxCaption) lightboxCaption.textContent = item.caption;
     if (lightboxCounter) {
-      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryTriggers.length;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryItems.length;
     }
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('lb-open');
+  }
+
+  function openLightbox(src, trigger) {
+    lastTrigger = trigger;
+    showLightboxAt(indexBySrc[src]);
+    if (lbClose) lbClose.focus();
   }
 
   function closeLightbox() {
-    if (!lightbox) return;
+    if (!lightbox || !lightbox.classList.contains('is-open')) return;
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('lb-open');
+    if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
   }
 
-  galleryTriggers.forEach(function (el, idx) {
+  rawTriggers.forEach(function (el) {
+    var img = el.tagName === 'IMG' ? el : el.querySelector('img');
+    if (!img) return;
+    var src = img.getAttribute('src');
+    var caption = el.getAttribute('data-lightbox-caption') || '';
+
+    if (!Object.prototype.hasOwnProperty.call(indexBySrc, src)) {
+      indexBySrc[src] = galleryItems.length;
+      galleryItems.push({ src: src, caption: caption });
+    }
+
+    // Los disparadores que no son botones reales se pueden usar con teclado
+    if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', 'Ampliar foto: ' + (img.getAttribute('alt') || caption));
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(src, el);
+        }
+      });
+    }
+
     el.addEventListener('click', function () {
-      showLightboxAt(idx);
+      openLightbox(src, el);
     });
   });
 
