@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Huancavelica: guía turística</title>
+  <meta name="description" content="Guía para visitar Huancavelica, la ciudad del mercurio: qué ver, galería fotográfica, qué comer, rutas de 1 a 5 días y cómo llegar.">
+  <meta name="theme-color" content="#16232a">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#inicio">
+        <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" fill="#16232a"/>
+          <polygon points="16,2 30,16 16,30 2,16" fill="#9e2b2f"/>
+          <polygon points="16,10 22,16 16,22 10,16" fill="#c2a23e"/>
+        </svg>
+        <span>Huancavelica</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Principal">
+        <a href="#historia">Historia</a>
+        <a href="#ver">Qué ver</a>
+        <a href="#galeria">Galería</a>
+        <a href="#sabores">Qué comer</a>
+        <a href="#rutas">Rutas</a>
+        <a href="#llegar">Cómo llegar</a>
+        <a href="#consejos">Consejos</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo oscuro y claro" title="Cambiar tema">
+          <span class="theme-icon" id="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label" id="theme-label">Oscuro</span>
+        </button>
+
+        <button type="button" class="saved-pill" id="saved-filter-btn" aria-pressed="false" title="Ver mis atractivos guardados">
+          <span>Mi ruta</span>
+          <span class="saved-count" id="saved-count">0</span>
+        </button>
+
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-copy" data-reveal>
+          <p class="kicker">Región andina de Perú · 3.676 m s. n. m.</p>
+          <h1>Huancavelica, la ciudad del mercurio</h1>
+          <p class="lead">Iglesias coloniales, una mina que alimentó la plata del virreinato, tejidos que se hacen a mano y lagunas a más de tres mil metros de altura.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#ver">Ver qué visitar</a>
+            <a class="btn btn--ghost" href="#rutas">Explorar rutas de 1 a 5 días</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal="scale" style="--delay: 120ms;">
+          <div class="hero-main-photo" data-lightbox-caption="Plaza de Armas y Catedral de San Antonio de Huancavelica al pie de los Andes.">
+            <img src="img/catedral-plaza.jpg" alt="Catedral de San Antonio y Plaza de Armas de Huancavelica" width="1200" height="800">
+            <div class="photo-caption-badge">
+              <span>Plaza de Armas y Catedral de San Antonio</span>
+              <span>Ampliar foto</span>
+            </div>
+          </div>
+
+          <div class="hero-secondary-row">
+            <div class="hero-sub-card" data-lightbox-caption="Danza de las tijeras frente a las letras de Huancavelica, Patrimonio Cultural Inmaterial de la Humanidad.">
+              <img src="img/danza-tijeras.jpg" alt="Danzante de tijeras saltando en la Plaza de Armas de Huancavelica" width="600" height="400" loading="lazy">
+              <div class="sub-label">Danza de las tijeras · Unesco</div>
+            </div>
+
+            <div class="hero-emblem-card">
+              <img src="img/escudo.png" alt="Escudo histórico de Huancavelica" width="120" height="134" loading="lazy">
+              <div>
+                <strong>Villa Rica de Oropesa</strong>
+                <span>Fundada en el valle del río Ichu junto al cerro de cinabrio de Santa Bárbara.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weave weave--hero" aria-hidden="true"></div>
+
+      <div class="wrap">
+        <dl class="quick">
+          <div class="quick-item" data-reveal style="--delay: 0ms;">
+            <dt>Altitud de la ciudad</dt>
+            <dd><span data-count="3676" data-dot="true" data-suffix=" m s. n. m.">3.676 m s. n. m.</span></dd>
+          </div>
+          <div class="quick-item" data-reveal style="--delay: 80ms;">
+            <dt>Desde Huancayo</dt>
+            <dd><span data-count="144" data-suffix=" km">144 km</span>, unas 4 h en bus</dd>
+          </div>
+          <div class="quick-item" data-reveal style="--delay: 160ms;">
+            <dt>Desde Ayacucho</dt>
+            <dd><span data-count="245" data-suffix=" km">245 km</span>, unas 5 h</dd>
+          </div>
+          <div class="quick-item" data-reveal style="--delay: 240ms;">
+            <dt>Desde Lima, vía Pisco</dt>
+            <dd><span data-count="499" data-suffix=" km">499 km</span>, unas 10 h</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- HISTORIA E IDENTIDAD -->
+    <section class="story" id="historia">
+      <div class="wrap story-grid">
+        <div data-reveal>
+          <h2>Por qué se fundó una ciudad aquí</h2>
+          <p>Huancavelica existe por el mercurio. Los españoles lo llamaban azogue y lo necesitaban para refinar la plata. La mina de Santa Bárbara, descubierta en el siglo XVI, convirtió este valle frío en una de las ciudades más importantes del virreinato.</p>
+          <p>Hoy la ciudad guarda esa herencia en sus iglesias y en su plaza. Y conserva algo anterior y más vivo: tejidos, danzas y fiestas que siguen celebrándose en las comunidades.</p>
+        </div>
+
+        <aside class="identity-panel" data-reveal="scale" style="--delay: 120ms;" aria-label="Símbolos de Huancavelica">
+          <div class="symbols-row">
+            <div class="symbol-box" data-lightbox-caption="Escudo de Huancavelica con el cerro rico de Santa Bárbara y el lema latino «Me feriam totum sic Huancavelica tuetur».">
+              <img src="img/escudo.png" alt="Escudo de Huancavelica" width="240" height="267" loading="lazy">
+              <span>Escudo de Huancavelica</span>
+            </div>
+            <div class="symbol-box" data-lightbox-caption="Bandera oficial de Huancavelica con el escudo histórico en el centro.">
+              <img src="img/bandera.png" alt="Bandera de Huancavelica" width="240" height="160" loading="lazy">
+              <span>Bandera regional</span>
+            </div>
+          </div>
+          <p class="motto-quote"><strong>Lema histórico en el escudo:</strong> «Me feriam totum sic Huancavelica tuetur», aludiendo al cerro mineral que dio origen a la ciudad.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- QUÉ VER -->
+    <section class="section" id="ver">
+      <div class="wrap">
+        <div class="section-header" data-reveal>
+          <h2>Qué ver</h2>
+          <p class="section-lead">Doce lugares y tradiciones, desde la plaza de la ciudad hasta pueblos a una o dos horas de camino. Filtra por categoría, busca por palabra clave o guarda tus favoritos en <strong>Mi ruta</strong>.</p>
+        </div>
+
+        <div class="controls-bar" data-reveal>
+          <div class="filters" role="group" aria-label="Filtrar por tipo">
+            <button type="button" class="chip" data-filter="todo" aria-pressed="true">
+              <span>Todo</span>
+              <span class="chip-badge">12</span>
+            </button>
+            <button type="button" class="chip" data-filter="historia" aria-pressed="false">
+              <span>Historia</span>
+              <span class="chip-badge">5</span>
+            </button>
+            <button type="button" class="chip" data-filter="cultura" aria-pressed="false">
+              <span>Cultura viva</span>
+              <span class="chip-badge">4</span>
+            </button>
+            <button type="button" class="chip" data-filter="naturaleza" aria-pressed="false">
+              <span>Naturaleza y aguas</span>
+              <span class="chip-badge">3</span>
+            </button>
+          </div>
+
+          <div class="search-box">
+            <input type="search" id="search-places" class="search-input" placeholder="Buscar lugar o tradición (ej. Yauli, lagunas...)" aria-label="Buscar atractivo turístico">
+            <button type="button" id="search-clear" class="search-clear" aria-label="Limpiar búsqueda">×</button>
+          </div>
+        </div>
+
+        <div class="grid" id="cards">
+          <article class="card" data-cat="historia" data-id="plaza-catedral" data-reveal>
+            <div class="weave weave--a" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Plaza de Armas y fachada de piedra roja de la Catedral de San Antonio.">
+              <img src="img/catedral-plaza.jpg" alt="Plaza de Armas y catedral de San Antonio" width="600" height="400" loading="lazy">
+            </div>
+            <span class="card-cat-tag">Historia</span>
+            <h3>Plaza de Armas y catedral de San Antonio</h3>
+            <p>El centro de la ciudad colonial. Empieza el recorrido aquí: casi todo lo demás queda a una caminata corta.</p>
+            <div class="card-footer">
+              <p class="meta">En la ciudad</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="historia" data-id="iglesias-coloniales" data-reveal style="--delay: 60ms;">
+            <div class="weave weave--b" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Vista aérea del centro histórico de Huancavelica y sus templos coloniales.">
+              <img src="img/plaza-aerea.jpg" alt="Vista aérea de la Plaza de Armas e iglesias coloniales de Huancavelica" width="600" height="402" loading="lazy">
+            </div>
+            <span class="card-cat-tag">Historia</span>
+            <h3>Iglesias coloniales</h3>
+            <p>Huancavelica conserva ocho iglesias de valiosa arquitectura colonial. Se recorren a pie en una mañana.</p>
+            <div class="card-footer">
+              <p class="meta">En la ciudad</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="historia" data-id="mina-santa-barbara" data-reveal style="--delay: 120ms;">
+            <div class="weave weave--c" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Panorámica de la ciudad de Huancavelica al pie del cerro Chacllatacana, camino a la mina Santa Bárbara.">
+              <img src="img/panoramica.jpg" alt="Panorámica de Huancavelica y las montañas que rodean la ciudad" width="640" height="480" loading="lazy">
+            </div>
+            <span class="card-cat-tag">Historia</span>
+            <h3>Mina Santa Bárbara</h3>
+            <p>Está en el cerro Chacllatacana. De aquí salió el azogue que usaban los españoles para refinar la plata. Pregunta en la ciudad por el estado del acceso antes de ir.</p>
+            <div class="card-footer">
+              <p class="meta">2,5 km al sur de la ciudad</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cultura" data-id="museo-morillo" data-reveal>
+            <div class="weave weave--a" aria-hidden="true"></div>
+            <span class="card-cat-tag">Cultura viva</span>
+            <h3>Museo Daniel Hernández Morillo</h3>
+            <p>Guarda la momia conocida como el Niño de Pultocc, una de las piezas más comentadas del museo.</p>
+            <div class="card-footer">
+              <p class="meta">En la ciudad</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="naturaleza" data-id="termas-san-cristobal" data-reveal style="--delay: 60ms;">
+            <div class="weave weave--d" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Valle del río Ichu y barrios tradicionales de Huancavelica vistos desde las alturas.">
+              <img src="img/mirador-ciudad.jpg" alt="Vista del valle de Huancavelica y el río Ichu" width="640" height="480" loading="lazy">
+            </div>
+            <span class="card-cat-tag">Naturaleza y aguas</span>
+            <h3>Termas de San Cristóbal</h3>
+            <p>Aguas termales y piscina en el barrio de San Cristóbal. Según un reportaje de Andina, es el único de los tres complejos turísticos de la ciudad que atiende a visitantes. Confirma el horario al llegar.</p>
+            <div class="card-footer">
+              <p class="meta">En la ciudad</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cultura" data-id="yauli-uchkus" data-reveal style="--delay: 120ms;">
+            <div class="weave weave--b" aria-hidden="true"></div>
+            <span class="card-cat-tag">Cultura viva</span>
+            <h3>Yauli y Uchkus Inkañan</h3>
+            <p>Yauli es conocido como la capital de la artesanía textil y conserva técnicas ancestrales de tejido. Desde allí parte el circuito arqueológico de Uchkus Inkañan, de entrada gratuita.</p>
+            <div class="card-footer">
+              <p class="meta">17 km de la ciudad</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="naturaleza" data-id="lagunas-choclococha" data-reveal>
+            <div class="weave weave--d" aria-hidden="true"></div>
+            <span class="card-cat-tag">Naturaleza y aguas</span>
+            <h3>Lagunas de Pultocc y Choclococha</h3>
+            <p>La ruta de las lagunas pasa por Santa Inés, donde se sirve trucha. Choclococha cierra el circuito: detente en la orilla para ver el antiguo pueblo y sus casas.</p>
+            <div class="card-footer">
+              <p class="meta">Excursión de día completo</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="historia" data-id="huaytara" data-reveal style="--delay: 60ms;">
+            <div class="weave weave--c" aria-hidden="true"></div>
+            <span class="card-cat-tag">Historia</span>
+            <h3>Huaytará: templo inca y museo</h3>
+            <p>El templo inca de Huaytará y el museo Humberto Espinoza Lozano están entre los atractivos más importantes de la región.</p>
+            <div class="card-footer">
+              <p class="meta">Sur de la región</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="naturaleza" data-id="vilca" data-reveal style="--delay: 120ms;">
+            <div class="weave weave--a" aria-hidden="true"></div>
+            <span class="card-cat-tag">Naturaleza y aguas</span>
+            <h3>Vilca</h3>
+            <p>Un distrito con pinturas rupestres, cañones, formaciones geológicas y cuevas. Conviene ir con guía local.</p>
+            <div class="card-footer">
+              <p class="meta">Excursión de varios días</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="historia" data-id="lircay" data-reveal>
+            <div class="weave weave--b" aria-hidden="true"></div>
+            <span class="card-cat-tag">Historia</span>
+            <h3>Lircay y Pueblo Viejo</h3>
+            <p>Capital de provincia de clima más templado. En el barrio de Pueblo Viejo se conservan construcciones coloniales.</p>
+            <div class="card-footer">
+              <p class="meta">75 km al sureste, 1 h en auto</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cultura" data-id="danza-tijeras" data-reveal style="--delay: 60ms;">
+            <div class="weave weave--c" aria-hidden="true"></div>
+            <div class="card-media" data-lightbox-caption="Danzante de tijeras en pleno salto acrobático acompañado de violín y arpa en Huancavelica.">
+              <img src="img/danza-tijeras.jpg" alt="Danza de las tijeras en Huancavelica" width="600" height="400" loading="lazy">
+            </div>
+            <span class="card-cat-tag">Cultura viva</span>
+            <h3>Danza de las tijeras</h3>
+            <p>El baile emblemático de Huancavelica, reconocido por la Unesco como Patrimonio Cultural de la Humanidad. Se ve sobre todo en fiestas patronales: consulta el calendario antes de viajar.</p>
+            <div class="card-footer">
+              <p class="meta">En fiestas de toda la región</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+
+          <article class="card" data-cat="cultura" data-id="chaccu-vicunas" data-reveal style="--delay: 120ms;">
+            <div class="weave weave--d" aria-hidden="true"></div>
+            <span class="card-cat-tag">Cultura viva</span>
+            <h3>Chaccu de vicuñas</h3>
+            <p>La fiesta en que se arrea y esquila a las vicuñas, una de las grandes tradiciones de la región. Las fechas cambian cada año: pregunta en la municipalidad.</p>
+            <div class="card-footer">
+              <p class="meta">Evento anual</p>
+              <button type="button" class="fav-btn" aria-pressed="false"><span>★</span> <span class="fav-label">Guardar</span></button>
+            </div>
+          </article>
+        </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <h3>No encontramos atractivos con ese filtro</h3>
+          <p>Prueba con otra palabra clave o vuelve a mostrar las doce recomendaciones de la guía.</p>
+          <button type="button" class="btn" id="reset-filters">Mostrar todos los lugares</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA VISUAL INTERACTIVA -->
+    <section class="section section--tint" id="galeria">
+      <div class="wrap">
+        <div class="section-header" data-reveal>
+          <h2>Postales de Huancavelica</h2>
+          <p class="section-lead">Toca cualquier imagen para abrir el visor a pantalla completa y deslizar entre las fotografías y símbolos de la región.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <button type="button" class="gallery-item" data-reveal data-lightbox-caption="Vista aérea de la Plaza de Armas y la Catedral de San Antonio en el corazón de Huancavelica.">
+            <img src="img/plaza-aerea.jpg" alt="Vista aérea de la Plaza de Armas de Huancavelica" width="600" height="402" loading="lazy">
+            <span class="gallery-caption">Vista aérea de la Plaza de Armas</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 60ms;" data-lightbox-caption="Fachada barroca en piedra roja de la Catedral de San Antonio frente a los cerros andinos.">
+            <img src="img/catedral-plaza.jpg" alt="Catedral de San Antonio de Huancavelica" width="600" height="400" loading="lazy">
+            <span class="gallery-caption">Catedral de San Antonio</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 120ms;" data-lightbox-caption="Danza de las tijeras junto a las letras monumentales de Huancavelica, con música de arpa y violín.">
+            <img src="img/danza-tijeras.jpg" alt="Danza de las tijeras en Huancavelica" width="600" height="400" loading="lazy">
+            <span class="gallery-caption">Danza de las tijeras</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal style="--delay: 180ms;" data-lightbox-caption="Panorámica de la ciudad de Huancavelica en el valle del río Ichu, custodiada por grandes montañas.">
+            <img src="img/panoramica.jpg" alt="Panorámica de Huancavelica" width="640" height="480" loading="lazy">
+            <span class="gallery-caption">Panorámica de la ciudad y cerros</span>
+          </button>
+
+          <button type="button" class="gallery-item" data-reveal data-lightbox-caption="Vista del valle y el curso del río Ichu atravesando la ciudad de Huancavelica.">
+            <img src="img/mirador-ciudad.jpg" alt="Valle de Huancavelica desde el mirador" width="640" height="480" loading="lazy">
+            <span class="gallery-caption">Valle del río Ichu</span>
+          </button>
+
+          <button type="button" class="gallery-item gallery-item--contain" data-reveal style="--delay: 60ms;" data-lightbox-caption="Ubicación geográfica del departamento de Huancavelica en la sierra centro-sur del Perú.">
+            <img src="img/mapa-region.jpg" alt="Mapa de ubicación de Huancavelica en el Perú" width="400" height="400" loading="lazy">
+            <span class="gallery-caption">Ubicación en el mapa del Perú</span>
+          </button>
+
+          <button type="button" class="gallery-item gallery-item--contain" data-reveal style="--delay: 120ms;" data-lightbox-caption="Escudo de armas de Huancavelica con el cerro mineral y el lema histórico.">
+            <img src="img/escudo.png" alt="Escudo de Huancavelica" width="240" height="267" loading="lazy">
+            <span class="gallery-caption">Escudo de armas</span>
+          </button>
+
+          <button type="button" class="gallery-item gallery-item--contain" data-reveal style="--delay: 180ms;" data-lightbox-caption="Bandera de Huancavelica.">
+            <img src="img/bandera.png" alt="Bandera de Huancavelica" width="240" height="160" loading="lazy">
+            <span class="gallery-caption">Bandera de Huancavelica</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SABORES -->
+    <section class="section" id="sabores">
+      <div class="wrap">
+        <div class="section-header" data-reveal>
+          <h2>Qué comer</h2>
+          <p class="section-lead">Cocina de altura: maíz, papa, carne de alpaca, cuy, carnero y trucha de las lagunas.</p>
+        </div>
+        <ul class="dishes">
+          <li data-reveal>
+            <h3>Mondongo</h3>
+            <p>Se prepara en la víspera de la mayoría de las fiestas. Lleva maíz blanco o mote, carne de res, carnero y tocino.</p>
+          </li>
+          <li data-reveal style="--delay: 60ms;">
+            <h3>Pachamanca huancavelicana</h3>
+            <p>Cocinada bajo tierra. Aquí se distingue por la carne de alpaca y el cuy.</p>
+          </li>
+          <li data-reveal style="--delay: 120ms;">
+            <h3>Bisté de alpaca</h3>
+            <p>Uno de los platos principales de la región, que es gran productora de alpacas.</p>
+          </li>
+          <li data-reveal>
+            <h3>Chupe de zapallo y puchero</h3>
+            <p>Dos platos de olla que reconfortan en las noches frías de la ciudad.</p>
+          </li>
+          <li data-reveal style="--delay: 60ms;">
+            <h3>Trucha de Santa Inés</h3>
+            <p>Se come en el pueblo de Santa Inés, de camino a las lagunas.</p>
+          </li>
+          <li data-reveal style="--delay: 120ms;">
+            <h3>Cocina de Huaytará</h3>
+            <p>Patachi, japchi, picante de queso y mazamorra de calabaza se preparan en los festivales gastronómicos de la provincia.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RUTAS -->
+    <section class="section section--tint" id="rutas">
+      <div class="wrap">
+        <div class="section-header" data-reveal>
+          <h2>Rutas sugeridas</h2>
+          <p class="section-lead">Elige cuánto tiempo tienes. Cada ruta suma a la anterior y puedes tocar cada etapa para marcar tu avance.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Duración del viaje" data-reveal>
+          <button type="button" role="tab" id="t1" aria-controls="p1" aria-selected="true">1 día</button>
+          <button type="button" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">3 días</button>
+          <button type="button" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">5 días</button>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+          <div class="route-progress-bar">
+            <span><strong>Recorrido urbano esencial</strong> · Ideal para un primer contacto</span>
+            <span class="route-status">0 de 4 etapas marcadas</span>
+          </div>
+          <ol class="steps">
+            <li><strong>Mañana.</strong> Plaza de Armas, catedral de San Antonio y las iglesias coloniales del centro.</li>
+            <li><strong>Mediodía.</strong> Museo Daniel Hernández Morillo y almuerzo con bisté de alpaca o mondongo.</li>
+            <li><strong>Tarde.</strong> Mina Santa Bárbara, a 2,5 km de la ciudad.</li>
+            <li><strong>Atardecer.</strong> Termas de San Cristóbal para descansar del frío y de la altura.</li>
+          </ol>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+          <div class="route-progress-bar">
+            <span><strong>Ciudad, textilería y lagunas altoandinas</strong> · Fin de semana largo</span>
+            <span class="route-status">0 de 3 etapas marcadas</span>
+          </div>
+          <ol class="steps">
+            <li><strong>Día 1.</strong> La ruta de un día: ciudad, museo, mina y termas.</li>
+            <li><strong>Día 2.</strong> Yauli, a 17 km: talleres de tejido y el circuito de Uchkus Inkañan.</li>
+            <li><strong>Día 3.</strong> Lagunas de Pultocc y Choclococha, con parada a comer trucha en Santa Inés.</li>
+          </ol>
+        </div>
+
+        <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+          <div class="route-progress-bar">
+            <span><strong>Inmersión regional completa</strong> · Valle, puna, Lircay y Huaytará</span>
+            <span class="route-status">0 de 3 etapas marcadas</span>
+          </div>
+          <ol class="steps">
+            <li><strong>Días 1 a 3.</strong> La ruta de tres días.</li>
+            <li><strong>Día 4.</strong> Lircay y el barrio colonial de Pueblo Viejo, a 75 km de la ciudad.</li>
+            <li><strong>Día 5.</strong> Huaytará y su templo inca. Calcula un día completo y confirma el transporte antes de salir.</li>
+          </ol>
+          <p class="note">Vilca es una excursión aparte, mejor con guía local y más de un día.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO LLEGAR -->
+    <section class="section" id="llegar">
+      <div class="wrap">
+        <div class="section-header" data-reveal>
+          <h2>Cómo llegar</h2>
+          <p class="section-lead">Accesos principales por carretera desde la sierra central y la costa peruana, además del estado actual del ferrocarril.</p>
+        </div>
+
+        <div class="arrival-layout">
+          <div class="routes">
+            <div class="route-card" data-reveal>
+              <h3>Desde Huancayo</h3>
+              <p>144 km por carretera: unas 4 horas en bus o 3 horas en auto. Es la entrada más usada.</p>
+            </div>
+            <div class="route-card" data-reveal style="--delay: 60ms;">
+              <h3>Desde Ayacucho</h3>
+              <p>245 km por Rumichaca: unas 5 horas.</p>
+            </div>
+            <div class="route-card" data-reveal style="--delay: 120ms;">
+              <h3>Desde Lima</h3>
+              <p>499 km pasando por Pisco: unas 10 horas por carretera.</p>
+            </div>
+            <div class="route-card route-card--wide" data-reveal>
+              <h3>El Tren Macho</h3>
+              <p>La línea Huancayo–Huancavelica mide unos 128 km. Entre 2024 y 2025 volvió a llevar pasajeros solo en el tramo Chilca–Cuenca, gratis y de forma temporal, con ampliación anunciada hasta Mariscal Cáceres. La modernización completa sigue en marcha, así que no cuentes con llegar en tren a la ciudad sin confirmarlo antes con el MTC.</p>
+            </div>
+          </div>
+
+          <aside class="map-showcase" data-reveal="scale" style="--delay: 120ms;">
+            <img src="img/mapa-region.jpg" alt="Mapa del Perú destacando la región de Huancavelica" width="400" height="400" loading="lazy" data-lightbox-caption="Ubicación del departamento de Huancavelica en el Perú, conectado con Junín (Huancayo), Ayacucho, Ica (Pisco) y Lima.">
+            <h3>Ubicación en el Perú</h3>
+            <p>Huancavelica se sitúa en la sierra centro-sur, entre Junín, Ayacucho, Ica y Lima. Toca el mapa para ampliarlo.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSEJOS -->
+    <section class="section section--tint" id="consejos">
+      <div class="wrap">
+        <div class="section-header" data-reveal>
+          <h2>Antes de viajar</h2>
+          <p class="section-lead">Cinco recomendaciones prácticas para disfrutar la altura y las comunidades con tranquilidad.</p>
+        </div>
+        <div class="tips">
+          <div class="tip-card" data-reveal>
+            <h3>La altura se nota</h3>
+            <p>A 3.676 metros, el primer día conviene ir tranquilo, beber agua y comer liviano. Si tienes problemas del corazón, respiratorios o estás embarazada, consulta con tu médico antes de ir.</p>
+          </div>
+          <div class="tip-card" data-reveal style="--delay: 60ms;">
+            <h3>Lleva capas</h3>
+            <p>Los días pueden ser soleados y las noches, muy frías. Abrigo, gorro, protector solar y calzado cómodo para calles empedradas.</p>
+          </div>
+          <div class="tip-card" data-reveal style="--delay: 120ms;">
+            <h3>Lleva efectivo</h3>
+            <p>En los pueblos pequeños es difícil pagar con tarjeta. Cambia billetes antes de salir de la ciudad.</p>
+          </div>
+          <div class="tip-card" data-reveal style="--delay: 180ms;">
+            <h3>Confirma antes de ir</h3>
+            <p>Horarios de museos, termas, fiestas y transporte cambian. Pregunta en la municipalidad o en tu alojamiento.</p>
+          </div>
+          <div class="tip-card" data-reveal style="--delay: 240ms;">
+            <h3>Pide permiso para fotografiar</h3>
+            <p>En las comunidades y fiestas, pregunta antes de fotografiar a las personas, y más si son bailarines o tejedoras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUENTES -->
+    <section class="section section--ink" id="fuentes">
+      <div class="wrap narrow" data-reveal>
+        <h2>Fuentes</h2>
+        <p>Los datos de esta guía vienen de estas publicaciones. Revisa siempre la información actual antes de viajar.</p>
+        <ul class="sources">
+          <li><a href="https://andina.pe/agencia/noticia-huancavelica-conoce-los-atractivos-turisticos-de-ciudad-del-mercurio-926769.aspx" target="_blank" rel="noopener noreferrer">Andina: Huancavelica, atractivos de la ciudad del mercurio</a></li>
+          <li><a href="https://andina.pe/agencia/noticia-huancavelica-ensueno-10-atractivos-debes-conocer-este-esplendido-destino-1086236.aspx" target="_blank" rel="noopener noreferrer">Andina: Huancavelica de ensueño, diez atractivos</a></li>
+          <li><a href="https://andina.pe/ingles/noticia-huancavelica-es-otro-destino-turistico-seguro-manana-recibira-sello-safe-travels-853607.aspx" target="_blank" rel="noopener noreferrer">Andina: sello Safe Travels y recursos turísticos</a></li>
+          <li><a href="https://elcomercio.pe/vamos/descubre-senderos-huancavelica-noticia-515597-noticia/" target="_blank" rel="noopener noreferrer">El Comercio: senderos de Huancavelica (Yauli, lagunas)</a></li>
+          <li><a href="https://repositorio.promperu.gob.pe/bitstreams/dbaa88e2-b977-40b7-90e3-07b7b38c536a/download" target="_blank" rel="noopener noreferrer">PromPerú: distancias y altitud</a></li>
+          <li><a href="https://andina.pe/agencia/noticia-emblematico-tren-macho-recorrera-19-kilometros-mas-a-fines-mayo-proximo-937125.aspx" target="_blank" rel="noopener noreferrer">Andina: tramo del Tren Macho</a></li>
+          <li><a href="https://larepublica.pe/peru-sorprendente/2019/09/04/chaccu-en-huancavelica-la-fiesta-de-las-vicunas" target="_blank" rel="noopener noreferrer">La República: Chaccu en Huancavelica</a></li>
+          <li><a href="https://diariocorreo.pe/edicion/huancavelica/conoce-la-magia-de-vilca-en-huancavelica-fotos-noticia/" target="_blank" rel="noopener noreferrer">Correo: Vilca</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="weave weave--foot" aria-hidden="true"></div>
+      <p>Guía turística no oficial de Huancavelica. <span id="year"></span> · Hecho por <strong>LucianoDoS</strong></p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante para volver arriba en móviles y escritorio -->
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Volver al inicio de la página" title="Volver arriba">↑</button>
+
+  <!-- Visor Lightbox para fotografías y símbolos -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Visor de imágenes">
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="img/catedral-plaza.jpg" alt="">
+      </div>
+      <div class="lightbox-bar">
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+        <div class="lightbox-controls">
+          <span id="lightbox-counter">1 / 8</span>
+          <button type="button" class="lightbox-btn" id="lightbox-prev" aria-label="Imagen anterior">‹</button>
+          <button type="button" class="lightbox-btn" id="lightbox-next" aria-label="Imagen siguiente">›</button>
+          <button type="button" class="lightbox-btn" id="lightbox-close" aria-label="Cerrar visor">✕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
